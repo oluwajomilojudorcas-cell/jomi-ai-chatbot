@@ -15,9 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/chat", async (req, res) => {
-
     try {
-
         const message = req.body.message;
 
         if (!message) {
@@ -27,7 +25,7 @@ app.post("/chat", async (req, res) => {
         }
 
         const response = await openai.responses.create({
-            model: "gpt-5.6-luna",
+            model: "gpt-5-mini",
             input: message
         });
 
@@ -36,13 +34,11 @@ app.post("/chat", async (req, res) => {
         });
 
     } catch (error) {
-
-        console.error(error);
+        console.error("AI ERROR:", error);
 
         res.status(500).json({
-            reply: "Sorry 😭 Something went wrong on my side."
+            reply: "Sorry 😭 My AI brain is having trouble right now."
         });
-
     }
 });
 
