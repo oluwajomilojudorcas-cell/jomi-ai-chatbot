@@ -1,129 +1,78 @@
-const input = document.querySelector("#userInput");
-const button = document.querySelector("#sendButton");
-const chat = document.querySelector("#chat");
-
-button.addEventListener("click", sendMessage);
-
-input.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-});
-
-function sendMessage() {
-
-    const message = input.value.trim();
-
-    if (message === "") {
-        return;
-    }
-
-    // Show user's message
-    const userMessage = document.createElement("div");
-
-    userMessage.className = "user-message";
-
-    userMessage.innerHTML =
-        "<strong>You:</strong> " + message;
-
-    chat.appendChild(userMessage);
-
-
-    // Get JOMI's response
-    const response = getResponse(message);
-
-
-    // Show JOMI's response
-    const botMessage = document.createElement("div");
-
-    botMessage.className = "bot-message";
-
-    botMessage.innerHTML =
-        "<strong>JOMI:</strong> " + response;
-
-    chat.appendChild(botMessage);
-
-
-    // Clear input
-    input.value = "";
-
-    // Scroll to newest message
-    chat.scrollTop = chat.scrollHeight;
+body {
+    background: #111827;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+}
 
-function getResponse(message) {
+h1 {
+    font-size: 45px;
+    margin-bottom: 5px;
+}
 
-    const text = message.toLowerCase();
+.subtitle {
+    color: #cbd5e1;
+    font-size: 18px;
+}
 
+#chat {
+    background: #1f2937;
+    min-height: 300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    overflow-y: auto;
+}
 
-    if (text.includes("hello") || text.includes("hi") || text.includes("hey")) {
-        return "Heyyy! 👋 How are you doing?";
-    }
+.user-message,
+.bot-message {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
 
+.user-message {
+    background: #374151;
+}
 
-    if (text.includes("how are you")) {
-        return "I'm doing great! 🤖 Thanks for asking!";
-    }
+.bot-message {
+    background: #4c1d95;
+}
 
+.input-area {
+    display: flex;
+    gap: 10px;
+}
 
-    if (text.includes("your name") || text.includes("who are you")) {
-        return "I'm JOMI AI! 🤖 Your little AI assistant.";
-    }
+input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
 
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #7c3aed;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    if (text.includes("who created you")) {
-        return "I was created by Jomi! 🚀";
-    }
-
-
-    if (text.includes("thank")) {
-        return "You're welcome! 😊";
-    }
-
-
-    if (text.includes("what can you do")) {
-        return "I'm still learning, but I can chat with you, answer simple questions and have some fun! 😎";
-    }
-
-
-    if (text.includes("joke")) {
-        return "Why did the computer go to the doctor? Because it had a virus! 😂💻";
-    }
-
-
-    if (text.includes("what is html")) {
-        return "HTML is the language we use to create the structure of websites. 🧱";
-    }
-
-
-    if (text.includes("what is css")) {
-        return "CSS makes websites look beautiful. 🎨";
-    }
-
-
-    if (text.includes("what is javascript")) {
-        return "JavaScript makes websites interactive and gives them behaviour. 🧠";
-    }
-
-
-    if (text.includes("bye")) {
-        return "Bye! 👋 Come back soon!";
-    }
-
-
-    // Random responses for things JOMI doesn't understand
-    const randomResponses = [
-        "Hmm 🤔 I'm still learning!",
-        "That's interesting! Tell me more 👀",
-        "I don't know that one yet, but I'm learning! 🧠",
-        "Good question! 🤖",
-        "You got me there 😂",
-        "I'm not sure yet, but I'll get smarter!"
-    ];
-
-    const randomIndex =
-        Math.floor(Math.random() * randomResponses.length);
-
-    return randomResponses[randomIndex];
+button:hover {
+    background: #6d28d9;
 }
