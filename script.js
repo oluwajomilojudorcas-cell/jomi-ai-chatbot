@@ -1,58 +1,78 @@
-const input = document.querySelector("#userInput");
-const button = document.querySelector("#sendButton");
-const chat = document.querySelector("#chat");
-
-button.addEventListener("click", sendMessage);
-
-function sendMessage() {
-    const message = input.value.trim();
-
-    if (message === "") {
-        return;
-    }
-
-    // Show what the user typed
-    const userMessage = document.createElement("p");
-    userMessage.textContent = "You: " + message;
-    chat.appendChild(userMessage);
-
-    // Get JOMI's answer
-    const response = getResponse(message);
-
-    // Show JOMI's answer
-    const botMessage = document.createElement("p");
-    botMessage.textContent = "JOMI: " + response;
-    chat.appendChild(botMessage);
-
-    input.value = "";
+body {
+    background: #111827;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-function getResponse(message) {
-    const text = message.toLowerCase();
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+}
 
-    if (text.includes("hello") || text.includes("hi")) {
-        return "Heyyy! 👋 How can I help you?";
-    }
+h1 {
+    font-size: 45px;
+    margin-bottom: 5px;
+}
 
-    if (text.includes("how are you")) {
-        return "I'm doing great! 🤖 Thanks for asking.";
-    }
+.subtitle {
+    color: #cbd5e1;
+    font-size: 18px;
+}
 
-    if (text.includes("your name")) {
-        return "I'm JOMI AI! 🤖";
-    }
+#chat {
+    background: #1f2937;
+    min-height: 300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    overflow-y: auto;
+}
 
-    if (text.includes("who created you")) {
-        return "I was created by Jomi! 🚀";
-    }
+.user-message,
+.bot-message {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
 
-    if (text.includes("thank")) {
-        return "You're welcome! 😊";
-    }
+.user-message {
+    background: #374151;
+}
 
-    if (text.includes("bye")) {
-        return "Bye! 👋 Come back soon.";
-    }
+.bot-message {
+    background: #4c1d95;
+}
 
-    return "Hmm 🤔 I'm still learning. Try asking me something else!";
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #7c3aed;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #6d28d9;
 }
