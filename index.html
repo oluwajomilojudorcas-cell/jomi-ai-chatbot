@@ -1,23 +1,45 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>JOMI AI</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>🤖 JOMI AI</h1>
+    <div class="container">
 
-    <p>Welcome! I'm your first chatbot.</p>
+        <h1>🤖 JOMI AI</h1>
 
-    <div id="chat"></div>
+        <p class="subtitle">Your little AI assistant</p>
 
-    <input id="userInput" type="text" placeholder="Ask me something...">
+        <div id="chat">
+            <div class="bot-message">
+                <strong>JOMI:</strong> Hey! 👋 I'm JOMI AI. Ask me something!
+            </div>
+        </div>
 
-    <button id="sendButton">Send</button>
+        <div class="input-area">
+
+            <input
+                id="userInput"
+                type="text"
+                placeholder="Ask me something..."
+            >
+
+            <button id="sendButton">Send</button>
+
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
